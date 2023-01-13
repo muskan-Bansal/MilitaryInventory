@@ -13,7 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <title>Brands</title>
+  <title>View employees</title>
 </head>
 
 <body>
@@ -57,13 +57,13 @@
         <a href="/orders" class="nav-link text-dark font-italic">
           <i class="eye icon"></i>
           View Orders
-
         </a>
       </li>
       <li class="nav-item">
         <a href="/viewstocks" class="nav-link text-dark font-italic">
-          <i class="tags icon"></i>
-          View Stocks
+          <p class="text-dark"><i class="tags icon"></i>
+            View Stocks
+          </p>
         </a>
       </li>
       <li class="nav-item">
@@ -73,10 +73,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/employees" class="nav-link text-dark font-italic">
-          <i class="eye icon"></i>
-          Employees
+        <a href="/employees" class="nav-link text-dark font-italic"
+          style="background: linear-gradient(to right,#a1ac27 0%, #e1f4a5 68%);">
+          <p class="text-white"><i class="tags icon"></i>
+            Employees
+          </p>
         </a>
+      </li>
       </li>
       <li class="nav-item">
         <a href="/addEmployees" class="nav-link text-dark font-italic">
@@ -91,18 +94,10 @@
     </h5>
 
     <ul class="nav flex-column bg-white mb-0">
-      <!-- <li class="nav-item">
-        <a href="/stocks" class="nav-link text-dark font-italic">
-                  <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-                  Add Stock
-              </a>
-      </li> -->
       <li class="nav-item">
-        <a href="/brands" class="nav-link text-dark font-italic"
-          style="background: linear-gradient(to right, #a1ac27 0%, #abc651 68%);">
-          <p class="text-white"><i class="yelp icon"></i>
-            Brand
-          </p>
+        <a href="/brands" class="nav-link text-dark font-italic">
+          <i class="yelp icon"></i>
+          Brand
         </a>
       </li>
       <li class="nav-item">
@@ -148,79 +143,79 @@
         class="align justify icon"></i><small class="text-uppercase font-weight-bold">Menu</small></button>
 
     <!-- Page content -->
-
-    <h1>Manage Brands</h1>
-    <center><img class="ui medium rounded image" src="brand.svg"></center>
+    <h1>Employees Details</h1>
     <br>
-    <center>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-lg btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add New Brand <i class="plus circle icon"></i></span>
-      </button>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add New Brand</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label  text-muted" style="font-size:20px">Enter New
-                  Brand</label>
-                <form action="/addbrand" method="POST">
-                  <input type="text" class="form-control" id="formGroupExampleInput" name="new"
-                    style="color:rgb(38, 36, 36); background: linear-gradient(to left,  #f3f3f2 0%, hsl(45, 100%, 99%) 68%);">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" value="Hello">Submit</button>
-              </form>
-            </div>
+    <center><img class="ui medium rounded image" src="category.svg"></center>
+    <br>
+
+    <form action="employees" method="GET">
+      <div class="ui four column grid">
+        <div class="row">
+          <div class="column">
+            <h3>View Employees</h3>
           </div>
         </div>
       </div>
-      <div class="ui card">
-        <table class="ui inverted  table table-bordered bg-secondary">
-          <thead>
-            <tr>
-              <th>
-                <center>
-                  <h1 class="">Brands</h1>
-                </center>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <% brand.forEach(function(order){ %>
-              <tr
-                style="background: linear-gradient(to left, #d3d0cc 0%, #e2e1d7 68%); font-weight:500px; font-size:20px; color:black;">
-                <td>
-                  <center>
-                    <h2>
-                      <%= order.Brand %>
-                    </h2> &emsp;<form action="/deletebrand" method="POST"><input type="hidden" name="deleteid"
-                        value="<%= order.Brand %>"><button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
-                  </center>
-                </td>
-              </tr>
-              <% }); %>
-          </tbody>
-        </table>
+      <br>
 
-        <div class="container">
-          <div class="row">
-            <h1>Brands</h1>
-            .col-md-
-          </div>
-        </div>
-    </center>
-  </div>
-  </div>
+    </form>
+    <table class="ui inverted bg-secondary table table-bordered">
+      <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>employee ID</th>
+          <th>employee Name</th>
+          <th>email</th>
+          <th>Role</th>
+          <th>Salary</th>
+          <th>joining_date</th>
 
+        </tr>
+      </thead>
+      <tbody>
+        <% employees.forEach(function(emp){ %>
+          <tr
+            style="background: linear-gradient(to left, #b5b0ab 0%, #e5e0c8 68%); height:100px; font-weight:600;font-size:16px"
+            class="text-dark">
+
+            <td style="background:rgb(133, 137, 112); width:100px">
+              <img class="image-fluid rounded" src=<%=emp.img_url %> style="height:120px;width:100px">
+
+            </td>
+            <td>
+              <%= emp.employee_id %>
+            <td>
+              <%= emp.employee_name %>
+            </td>
+            <td>
+              <%= emp.email %>
+            </td>
+            <td>
+              <%= emp.Role %>
+            </td>
+            <td>
+              <%= emp.Salary %>
+            </td>
+            <td>
+              <%= emp.Joining_date.getDate() %> /
+                <%= emp.Joining_date.getMonth() %> /
+                  <%= emp.Joining_date.getFullYear() %>
+            </td>
+            <td>
+              <form action="/deleteEmployee" method="POST"><input type="hidden" name="deleteid"
+                  value="<%= emp.employee_id %>"><button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </td>
+
+          </tr>
+          <% }); %>
+
+      </tbody>
+    </table>
+
+
+
+  </div>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
@@ -229,6 +224,7 @@
   <!-- Semnatic-UI Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+
   <script>
     $(function () {
       // Sidebar toggle behavior
@@ -238,7 +234,6 @@
     });
 
   </script>
-
 
 </body>
 
